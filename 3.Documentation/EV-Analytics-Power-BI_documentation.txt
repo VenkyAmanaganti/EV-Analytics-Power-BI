@@ -1,1 +1,454 @@
+ELECTRIC VEHICLE (EV) ANALYTICS
+PROJECT DOCUMENTATION
+Tools: CSV | Power BI Desktop | Power Query | DAX | GitHub
 
+================================================================
+TABLE OF CONTENTS
+================================================================
+1. Project Background
+2. Dataset Information
+3. Phase 1 - Data Collection
+4. Phase 2 - Data Preparation (Power Query)
+5. Phase 3 - Data Analysis and DAX (Power BI)
+6. Phase 4 - Dashboard Pages
+7. Data Quality Checks
+8. Key Analysis Questions
+9. Recommendations
+================================================================
+
+
+================================================================
+1. PROJECT BACKGROUND
+================================================================
+
+This project explores electric vehicle (EV) data using Power BI. The report
+organizes vehicle and market information into four dashboard pages:
+Market Dashboard, Technical & Performance Analysis, Market & Pricing
+Analysis, and Customer & Safety Analysis.
+
+The goal is to make it easier to explore:
+- EV records by manufacturer, vehicle type, country, and release year
+- Vehicle prices and driving ranges
+- Battery capacity and charging time
+- Performance and efficiency attributes
+- Safety ratings, seating capacity, and cargo space
+- Differences between vehicle groups using interactive filters
+
+This project demonstrates data analytics and business intelligence skills,
+including data preparation, KPI design, data visualization, and dashboard
+documentation.
+
+
+================================================================
+2. DATASET INFORMATION
+================================================================
+
+Source File      : EV_dataset.csv
+Dataset Size     : 250,000 rows x 22 columns
+File Format      : CSV
+Primary Tool     : Microsoft Power BI Desktop
+
+Columns in the dataset:
+- manufacturer
+- model
+- type
+- drive_type
+- fuel_type
+- color
+- battery_kwh
+- range_km
+- charging_time_hr
+- fast_charging
+- release_year
+- country
+- city
+- seats
+- price_usd
+- efficiency_score
+- acceleration_0_100_kmph
+- top_speed_kmph
+- warranty_years
+- cargo_space_liters
+- safety_rating
+- target_high_efficiency
+
+Field descriptions:
+- manufacturer: vehicle manufacturer.
+- model: vehicle model.
+- type: vehicle category or type.
+- drive_type: drivetrain classification.
+- fuel_type: fuel or powertrain category as represented in the source.
+- color: vehicle color.
+- battery_kwh: battery capacity in kilowatt-hours.
+- range_km: driving range in kilometers.
+- charging_time_hr: charging time in hours.
+- fast_charging: indicator for fast-charging availability.
+- release_year: release/model year recorded in the dataset.
+- country and city: geographic attributes associated with the record.
+- seats: passenger seating capacity.
+- price_usd: vehicle price in US dollars.
+- efficiency_score: vehicle efficiency score.
+- acceleration_0_100_kmph: acceleration measure from 0 to 100 km/h.
+- top_speed_kmph: maximum speed in kilometers per hour.
+- warranty_years: warranty duration in years.
+- cargo_space_liters: cargo capacity in liters.
+- safety_rating: vehicle safety rating.
+- target_high_efficiency: high-efficiency classification.
+
+Note: Confirm field definitions and units against the dataset source or
+project requirements before using the data for formal business decisions.
+
+
+================================================================
+3. PHASE 1 - DATA COLLECTION
+================================================================
+
+STEP 1: Locate the Dataset
+--------------------------
+1. Locate the supplied file named EV_dataset.csv.
+2. Keep the original file unchanged as a backup.
+3. Create a separate project folder for the Power BI report, source data,
+   screenshots, and documentation.
+
+STEP 2: Review the Dataset
+--------------------------
+1. Open the CSV in Excel or import it into Power BI.
+2. Confirm that the expected 22 columns are present.
+3. Check that the data is separated into the correct columns.
+4. Review sample records and note the expected data types.
+5. Confirm what each row represents before calculating totals or averages.
+
+Dataset size supplied for this project: 250,000 rows and 22 columns.
+
+
+================================================================
+4. PHASE 2 - DATA PREPARATION (POWER QUERY)
+================================================================
+
+STEP 1: Import the CSV
+----------------------
+1. Open Power BI Desktop.
+2. Select Home > Get Data > Text/CSV.
+3. Browse to EV_dataset.csv.
+4. Preview the data and select Transform Data to open Power Query.
+
+STEP 2: Verify Column Names and Data Types
+------------------------------------------
+1. Confirm all 22 expected columns are present.
+2. Set numeric fields to appropriate numeric data types.
+3. Set manufacturer, model, type, country, city, drive_type, fuel_type,
+   and color to suitable text data types.
+4. Check release_year is interpreted as a year value.
+5. Verify fast_charging and target_high_efficiency use appropriate logical
+   or categorical data types based on the actual source values.
+
+STEP 3: Check Data Quality
+--------------------------
+1. Use Power Query column quality/profile tools where appropriate.
+2. Check for null or blank values.
+3. Check for duplicate records.
+4. Inspect unexpected categories and inconsistent text values.
+5. Check numeric fields for implausible values and outliers.
+6. Review price_usd for negative or zero values and determine whether they
+   are valid, placeholders, or errors.
+7. Check that measurements use consistent units.
+
+STEP 4: Apply Appropriate Cleaning
+----------------------------------
+1. Correct data types and trim/clean text values where needed.
+2. Remove or correct invalid records only after confirming the issue.
+3. Handle missing values according to the analysis requirement.
+4. Keep a record of cleaning decisions so the work is reproducible.
+5. Select Close & Apply when the data is ready.
+
+Important: Do not remove records just because a value looks unusual.
+First verify whether it is an error or a legitimate observation.
+
+
+================================================================
+5. PHASE 3 - DATA ANALYSIS AND DAX (POWER BI)
+================================================================
+
+Create measures that match the question being answered. Example measures
+are provided below; verify the table name in your own Power BI model.
+
+Measure 1 - Total EV Records
+----------------------------
+Total EV Records = COUNTROWS('EV_dataset')
+
+This counts rows in the table. It should only be described as a count of
+unique vehicles if each row is known to represent a unique vehicle or a
+reliable unique identifier is available.
+
+Measure 2 - Average Price
+-------------------------
+Average Price = AVERAGE('EV_dataset'[price_usd])
+
+Format as currency (USD) in the model or visual.
+
+Measure 3 - Average Range
+-------------------------
+Average Range = AVERAGE('EV_dataset'[range_km])
+
+Use kilometers as the displayed unit.
+
+Measure 4 - Average Battery Capacity
+------------------------------------
+Average Battery Capacity = AVERAGE('EV_dataset'[battery_kwh])
+
+Use kWh as the displayed unit.
+
+Measure 5 - Average Charging Time
+----------------------------------
+Average Charging Time = AVERAGE('EV_dataset'[charging_time_hr])
+
+Use hours as the displayed unit.
+
+Measure 6 - Average Efficiency Score
+------------------------------------
+Average Efficiency Score = AVERAGE('EV_dataset'[efficiency_score])
+
+Confirm the scale and meaning of the efficiency score before interpreting it.
+
+Measure 7 - Average Safety Rating
+---------------------------------
+Average Safety Rating = AVERAGE('EV_dataset'[safety_rating])
+
+Confirm the rating scale before interpreting the result.
+
+Measure 8 - Average Cargo Space
+-------------------------------
+Average Cargo Space = AVERAGE('EV_dataset'[cargo_space_liters])
+
+Use liters as the displayed unit.
+
+These are example measures. Adapt them to the actual table name and report
+requirements. Use suitable aggregations and avoid summing measures such as
+price or driving range when an average or median answers the question better.
+
+
+================================================================
+6. PHASE 4 - DASHBOARD (POWER BI)
+================================================================
+
+PAGE 1: MARKET DASHBOARD
+------------------------
+Purpose:
+Provide a high-level overview of the vehicles represented in the dataset.
+
+Dashboard areas shown include:
+- KPI cards for selected EV metrics
+- Manufacturer comparisons
+- Average price by vehicle type
+- Price versus driving range
+- Country-level distribution
+- Release-year trend analysis
+- Charging-time comparisons
+- Slicers for filtering relevant market segments
+
+Questions to investigate:
+- Which manufacturers have the most records?
+- How does average price vary by vehicle type?
+- How are the records distributed geographically?
+- How do selected metrics vary across release years?
+
+PAGE 2: TECHNICAL & PERFORMANCE ANALYSIS
+----------------------------------------
+Purpose:
+Compare technical specifications and performance-related measures.
+
+Dashboard areas shown include:
+- Top speed
+- Acceleration
+- Efficiency
+- Safety rating
+- Driving range
+- Comparisons across manufacturers or vehicle categories
+- Interactive filters
+
+Questions to investigate:
+- How does range differ among manufacturers?
+- How do performance characteristics vary by vehicle type?
+- Are efficiency and safety measures displayed with the correct aggregation?
+
+PAGE 3: MARKET & PRICING ANALYSIS
+---------------------------------
+Purpose:
+Explore vehicle pricing and the relationship between price and range.
+
+Dashboard areas shown include:
+- Price-related KPI cards
+- Minimum and maximum price
+- Average range
+- Average price by vehicle type
+- Price versus range comparisons
+- Manufacturer or release-year comparisons
+- Interactive filters
+
+Questions to investigate:
+- How does price vary across vehicle types?
+- Is there a visible relationship between price and driving range?
+- How do manufacturers compare when the same filters are applied?
+
+PAGE 4: CUSTOMER & SAFETY ANALYSIS
+----------------------------------
+Purpose:
+Explore passenger capacity, cargo space, and safety-related measures.
+
+Dashboard areas shown include:
+- Average safety rating
+- Average seating capacity
+- Average cargo space
+- Safety comparisons by manufacturer
+- Seating and cargo comparisons by vehicle type
+- Interactive filters
+
+Questions to investigate:
+- How does seating capacity vary by vehicle type?
+- Which categories offer different cargo-space profiles?
+- How do safety ratings compare across selected records?
+
+INTERACTIVITY
+-------------
+Where configured, slicers let users filter the visuals by fields such as
+country, manufacturer, vehicle type, drive type, and release year.
+
+To use the report:
+1. Select a value in a slicer.
+2. Observe the KPI cards and connected charts.
+3. Combine filters to compare similar groups.
+4. Clear the filters before starting another comparison.
+5. Use tooltips where available to inspect chart details.
+
+
+================================================================
+7. DATA QUALITY CHECKS
+================================================================
+
+The dashboard screenshots indicate issues that should be reviewed before
+presenting conclusions:
+
+1. Negative Minimum Price
+   The Market & Pricing page appears to show a minimum price around -5K.
+   Inspect the underlying price_usd records and determine whether this is an
+   invalid value, placeholder, calculation issue, or filter effect.
+
+2. Aggregation of Price and Range
+   Some chart axes appear to use sums of price_usd or range_km. Summing
+   vehicle prices or ranges across unrelated records can be misleading.
+   Confirm whether average, median, count, or another aggregation is suitable.
+
+3. Truncated Titles and Labels
+   Expand chart titles and KPI labels so the metric and unit are clear.
+
+4. Nearly Uniform Safety or Efficiency Visuals
+   Verify the field placed in the visual, its aggregation, number formatting,
+   and the effect of slicers.
+
+5. Release-Year Aggregation
+   Confirm release_year is used to group or filter records, not unintentionally
+   summed as a numeric measure.
+
+6. Metric Definitions
+   Verify the scale and meaning of safety_rating and efficiency_score before
+   describing one value as better than another.
+
+These are checks suggested by the screenshots, not confirmed defects in the
+source data. Validate each item against the raw CSV and Power BI model.
+
+
+================================================================
+8. KEY ANALYSIS QUESTIONS
+================================================================
+
+Use the dashboard to investigate the following questions:
+- Which manufacturers are most represented in the dataset?
+- Which vehicle types have higher or lower average prices?
+- How does driving range vary with price?
+- How do battery capacity and charging time vary across records?
+- How do top speed and acceleration compare across vehicle categories?
+- How do safety ratings, seats, and cargo space differ by vehicle type?
+- How do patterns change when country, manufacturer, or release year is
+  selected?
+
+Do not report a specific result as a finding until it has been checked in the
+interactive report and validated against the source data.
+
+
+================================================================
+9. RECOMMENDATIONS
+================================================================
+
+1. Validate the negative minimum price before sharing the report.
+2. Replace sums with averages, medians, or counts when those measures better
+   represent the question.
+3. Use clear KPI names and include units such as USD, km, kWh, hours, and liters.
+4. Keep visual formatting and color meaning consistent across all four pages.
+5. Verify that slicers filter the intended visuals.
+6. Add tooltips or notes to explain important measures.
+7. Document all cleaning steps and DAX definitions.
+8. Use the dashboard to compare like-for-like vehicle groups rather than
+   drawing conclusions from unrelated records.
+9. Recheck data quality whenever the source dataset is refreshed.
+
+================================================================
+10. PROJECT FILES AND REPRODUCIBILITY
+================================================================
+
+Suggested GitHub repository structure:
+
+EV-Analytics-Power-BI/
+    README.md
+    Documentation.txt
+    EV_dataset.csv
+    EV_Analytics_PowerBI_Project.pptx
+    EV_Analysis.pbix
+    screenshots/
+        market-dashboard.png
+        technical-performance.png
+        market-pricing.png
+        customer-safety.png
+
+Use the actual filenames available in your repository. Include EV_Analysis.pbix
+only if you have the Power BI report file; screenshots and a PowerPoint are
+static documentation and cannot replace an interactive PBIX report.
+
+To reproduce the report:
+1. Open the .pbix file in Power BI Desktop.
+2. Update the source path to EV_dataset.csv if needed.
+3. Refresh the data.
+4. Resolve any refresh errors.
+5. Validate the KPIs and visuals.
+6. Test slicers and interactions before sharing.
+
+================================================================
+11. LIMITATIONS AND FUTURE IMPROVEMENTS
+================================================================
+
+Limitations:
+- The dashboard describes the supplied dataset and may not represent the
+  entire EV market.
+- Results depend on data quality and field definitions.
+- Chart relationships do not prove causation.
+- Comparisons can be misleading when vehicle groups differ substantially.
+
+Future improvements:
+- Add median price and range alongside averages.
+- Add a dedicated data-quality page.
+- Add drill-through pages and informative tooltips.
+- Document KPI formulas and definitions in the report.
+- Add year-over-year comparisons where the data supports them.
+- Create manufacturer rankings with transparent criteria.
+- Automate checks for missing, duplicate, and invalid values.
+
+================================================================
+END OF DOCUMENTATION
+================================================================
+Project: Electric Vehicle (EV) Analytics
+Tools: CSV | Power BI Desktop | Power Query | DAX | GitHub
+Dataset: EV_dataset.csv (250,000 rows x 22 columns)
+Author    : Amanaganti Venkateswarlu
+Project   : ELECTRIC VEHICLE (EV) ANALYTICS
+Date      : OCT 2026
+Portfolio : https://github.com/VenkyAmanaganti
+================================================================
