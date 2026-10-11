@@ -1,189 +1,321 @@
-# ⚡ Electric Vehicle (EV) Analytics Dashboard | Power BI
+# ⚡ Electric Vehicle (EV) Analytics Dashboard
+
+## EV Market, Technical Performance & Pricing Analysis
 
 ## 📌 Project Overview
 
-The **Electric Vehicle (EV) Analytics Dashboard** is a Power BI data analytics project designed to explore the electric vehicle market, vehicle performance, pricing, and customer-related characteristics.
+This project analyzes Electric Vehicle (EV) data to understand market distribution, vehicle performance, pricing patterns, driving range, safety ratings, and customer-focused vehicle characteristics.
 
-The project uses interactive dashboards and data visualizations to analyze EV manufacturers, vehicle types, driving range, battery capacity, charging time, safety ratings, and pricing.
+The goal is to explore differences between manufacturers and vehicle types, identify performance trends, compare pricing patterns, and transform raw EV data into actionable insights through an interactive Power BI dashboard.
 
-The objective is to transform raw EV data into meaningful insights that support data-driven analysis and decision-making.
+The project contains four dashboard pages covering market analysis, technical performance, market pricing, and customer & safety analysis.
 
-## 🎯 Project Objectives
+## 🎯 Business Task
 
-- Analyze the EV market across manufacturers and countries.
-- Compare electric vehicles by type, price, and driving range.
-- Evaluate technical performance, including top speed, acceleration, and efficiency.
-- Analyze battery capacity and charging time.
-- Explore vehicle safety ratings, seating capacity, and cargo space.
-- Build interactive dashboards using Power BI slicers and visualizations.
-- Identify data-quality issues and opportunities for improving analysis.
+Analyze electric vehicle data to answer key business questions:
 
-## 🛠️ Tools and Technologies
+- Which manufacturers and vehicle types are represented in the dataset?
+- How do EV driving range, efficiency, speed, and acceleration compare?
+- How does average vehicle price vary by vehicle type and manufacturer?
+- What relationships exist between price, driving range, and performance?
+- How do safety ratings, seating capacity, and cargo space vary across vehicle categories?
+- How can interactive filters help users explore EV market segments?
 
-- **Power BI Desktop** — Dashboard development and data visualization
-- **Power Query** — Data cleaning and transformation
-- **DAX** — Measures and KPI calculations
-- **CSV / Excel** — Data storage and preparation
-- **GitHub** — Project documentation and version control
+## 🛠️ Tools Used
 
-## 📊 Dashboard Pages
+- **Microsoft Excel** — Data inspection and preparation
+- **Microsoft Power BI** — Interactive dashboard development and visualization
+- **DAX** — KPI calculations and analytical measures
+- **Power Query** — Data transformation and cleaning
+- **GitHub** — Project documentation and portfolio presentation
 
-### 1. EV Market Dashboard
+## 📂 Dataset
 
-Provides an overview of the electric vehicle market.
+**Source:** EV Dataset (`EV_dataset.csv`)
 
-**Key visualizations:**
-- Total EV records
-- Average vehicle price
-- Average driving range
-- Average battery capacity
-- Average safety rating
-- EVs by manufacturer
-- Average price by vehicle type
-- Price versus driving range
-- EV distribution by country
-- Release-year trends
-- Average battery charging time
+The dataset contains information about electric vehicles, including manufacturer, model, pricing, performance, vehicle specifications, and geographical attributes.
 
-### 2. EV Technical & Performance Analysis
+### Dataset Information
 
-Focuses on the technical specifications and performance of electric vehicles.
-
-**Key metrics:**
-- Average top speed
-- Average acceleration
-- Average efficiency
-- Average safety rating
-- Average driving range
-
-**Key visualizations:**
-- Average efficiency by manufacturer
-- Safety rating distribution
-- Price versus driving range
-- Interactive filters for country, manufacturer, vehicle type, drive type, and release year
-
-### 3. Market & Pricing Analysis
-
-Explores vehicle pricing and its relationship with other characteristics.
-
-**Key visualizations:**
-- Average vehicle price
-- Minimum and maximum price
-- Average driving range
-- Safety rating distribution
-- Average price by vehicle type
-- Price versus range by manufacturer
-- EV models by release year
-
-**Interactive filters:**
-- Country
-- Manufacturer
-- Vehicle type
-- Release year
-
-### 4. EV Customer & Safety Analysis
-
-Examines vehicle characteristics related to safety, passenger capacity, and cargo space.
-
-**Key metrics:**
-- Average safety rating
-- Average seats
-- Average cargo space
-- Average driving range
-
-**Key visualizations:**
-- Safety rating distribution
-- Safety rating by manufacturer
-- Seating capacity by vehicle type
-- Cargo space by vehicle type
-
-**Interactive filters:**
-- Country
-- Manufacturer
-- Vehicle type
-- Drive type
-- Release year
-
-## 🗂️ Dataset Description
-
-The project uses `EV_dataset.csv`, containing **250,000 rows and 22 columns**.
-
-Important fields include:
-
-| Column | Description |
+| Metric | Details |
 |---|---|
-| `manufacturer` | EV manufacturer |
-| `model` | Vehicle model |
-| `type` | Vehicle category |
-| `price_usd` | Vehicle price in USD |
-| `battery_kwh` | Battery capacity in kWh |
-| `range_km` | Driving range in kilometers |
-| `charging_time_hr` | Charging time in hours |
-| `top_speed_kmph` | Maximum speed in km/h |
-| `efficiency_score` | Vehicle efficiency score |
-| `safety_rating` | Vehicle safety rating |
-| `seats` | Passenger seating capacity |
-| `cargo_space_liters` | Cargo capacity in liters |
-| `release_year` | Vehicle release year |
-| `country` | Country associated with the record |
-| `city` | City associated with the record |
-| `drive_type` | Vehicle drivetrain category |
-| `fuel_type` | Fuel or powertrain category |
-| `fast_charging` | Fast-charging availability |
-| `warranty_years` | Warranty duration in years |
-| `target_high_efficiency` | High-efficiency classification |
+| Total Records | 250,000 |
+| Total Columns | 22 |
+| Manufacturer | Vehicle manufacturer |
+| Model | Vehicle model name |
+| Price | `price_usd` |
+| Driving Range | `range_km` |
+| Battery Capacity | `battery_kwh` |
+| Charging Time | `charging_time_hr` |
+| Efficiency Score | `efficiency_score` |
+| Safety Rating | `safety_rating` |
+| Cargo Space | `cargo_space_liters` |
+| Seating Capacity | `seats` |
+| Release Year | `release_year` |
 
-## 📈 Skills Demonstrated
+*Note: Record counts and field names reflect the supplied dataset. Confirm the dataset's original source and licensing before redistribution.*
 
-- Data analysis and exploratory data analysis
-- Power BI dashboard development
-- Data visualization and chart selection
-- Data cleaning and transformation using Power Query
+## 🧹 Data Preparation
+
+The dataset was used to build a structured Power BI report with fields for vehicle characteristics, performance, pricing, and geographical analysis.
+
+Key preparation and validation activities include:
+
+- Reviewing column names and data types.
+- Checking missing values and duplicate records.
+- Validating numeric fields such as price, battery capacity, range, and safety rating.
+- Checking for invalid values, including negative prices.
+- Preparing categorical fields for manufacturer, country, vehicle type, and drive type analysis.
+- Creating or configuring measures for dashboard KPI cards.
+- Organizing fields for charts, slicers, and interactive filtering.
+
+**Data quality note:** Validate the negative minimum price displayed on the Market & Pricing page before using it in business conclusions.
+
+## 📊 Dashboard Overview
+
+The Power BI report contains four interactive pages.
+
+### 1. ⚡ Electrical Vehicle Market Dashboard
+
+Provides a high-level overview of the EV dataset and its market characteristics.
+
+**Visualizations:**
+- EVs by Manufacturer
+- Average Price by Vehicle Type
+- Price vs. Range
+- EVs by Release Year
+- EV Distribution by Country
+- Average Battery Charging Time
+
+**Key KPIs:**
+- Total EV Records
+- Average Price
+- Average Range
+- Average Battery Capacity
+- Average Safety Rating
+
+**Purpose:** Understand the overall dataset, compare manufacturers, and explore geographical and vehicle-category patterns.
+
+### 2. 🔋 EV Technical & Performance Analysis
+
+Focuses on vehicle specifications and performance indicators.
+
+**Visualizations:**
+- Average Efficiency by Manufacturer
+- Safety Rating Distribution
+- Price vs. Driving Range
+
+**Key KPIs:**
+- Average Top Speed
+- Average Acceleration
+- Average Efficiency
+- Average Safety Rating
+- Average Range
+
+**Interactive Filters:**
+- Country
+- Manufacturer
+- Vehicle Type
+- Drive Type
+- Release Year
+
+**Purpose:** Compare vehicle performance and examine differences between manufacturers and market segments.
+
+### 3. 💰 Market & Pricing Analysis
+
+Explores EV pricing patterns and their relationship with vehicle characteristics.
+
+**Visualizations:**
+- Safety Rating Distribution
+- Average Price by Vehicle Type
+- Price vs. Range by Manufacturer
+- EV Models by Release Year
+
+**Key KPIs:**
+- Average Price
+- Minimum Price
+- Maximum Price
+- Average Driving Range
+
+**Interactive Filters:**
+- Country
+- Manufacturer
+- Vehicle Type
+- Release Year
+
+**Purpose:** Compare pricing across vehicle categories and investigate potential relationships between price and driving range.
+
+### 4. 🛡️ EV Customer & Safety Analysis
+
+Examines vehicle characteristics relevant to passenger capacity, storage, and safety.
+
+**Visualizations:**
+- Safety Rating Distribution
+- Safety Rating by Manufacturer
+- Seating Capacity by Vehicle Type
+- Cargo Space by Vehicle Type
+
+**Key KPIs:**
+- Average Safety Rating
+- Average Seats
+- Average Cargo Space
+- Average Range
+
+**Interactive Filters:**
+- Country
+- Manufacturer
+- Vehicle Type
+- Drive Type
+- Release Year
+
+**Purpose:** Help users compare vehicle specifications and explore safety-related metrics across manufacturers and vehicle categories.
+
+## 📈 Key Analytical Findings
+
+The dashboard provides a foundation for investigating the following areas:
+
+**Finding 1: Manufacturer and Market Coverage**
+
+Manufacturer and country visuals help identify which brands and geographical markets are represented in the dataset.
+
+**Finding 2: Performance Comparisons**
+
+Range, efficiency, top speed, and acceleration measures can be compared across manufacturers to identify differences in vehicle specifications.
+
+**Finding 3: Pricing Differences**
+
+Comparing average prices by vehicle type helps explore potential price differences between sedans, SUVs, hatchbacks, coupes, trucks, and crossovers.
+
+**Finding 4: Price and Driving Range**
+
+Scatter plots allow users to investigate whether vehicles with higher prices also tend to have greater driving ranges.
+
+**Finding 5: Practical Vehicle Characteristics**
+
+Seating capacity and cargo space comparisons help users understand differences in vehicle utility across categories.
+
+*These are analytical directions supported by the dashboard design, not independently verified conclusions. Validate the underlying measures and data before reporting specific rankings or relationships.*
+
+## 💡 Recommendations
+
+### 1. Improve KPI Accuracy
+
+Use explicit DAX measures and confirm whether each KPI should use an average, sum, count, minimum, or maximum.
+
+### 2. Investigate Price and Range Relationships
+
+Compare price and driving range by manufacturer and vehicle type. Consider median values and outliers to avoid misleading comparisons.
+
+### 3. Validate Data Quality
+
+Investigate negative prices, missing values, duplicates, and unexpected numeric values before publishing the report.
+
+### 4. Improve Dashboard Readability
+
+Use consistent titles, units, colors, number formats, and axis labels across all four pages.
+
+### 5. Use Interactive Filtering
+
+Combine country, manufacturer, vehicle type, drive type, and release-year filters to make comparisons more meaningful.
+
+## 🧮 Example DAX Measures
+
+The following are example measures you can adapt to your Power BI table name and business requirements.
+
+**Total EV Records**
+
+```dax
+Total EVs = COUNTROWS(EV_dataset)
+```
+
+**Average EV Price**
+
+```dax
+Average Price = AVERAGE(EV_dataset[price_usd])
+```
+
+**Average Driving Range**
+
+```dax
+Average Range = AVERAGE(EV_dataset[range_km])
+```
+
+**Average Battery Capacity**
+
+```dax
+Average Battery Capacity = AVERAGE(EV_dataset[battery_kwh])
+```
+
+**Average Safety Rating**
+
+```dax
+Average Safety Rating = AVERAGE(EV_dataset[safety_rating])
+```
+
+*Ensure `EV_dataset` matches the actual table name in your Power BI model.*
+
+## 📁 Project Structure
+
+A suggested GitHub repository structure is:
+
+```text
+EV-Analytics-PowerBI/
+│
+├── README.md
+├── EV_dataset.csv
+├── EV_Analytics_PowerBI_Project.pbix
+│
+├── screenshots/
+│   ├── market-dashboard.png
+│   ├── technical-performance.png
+│   ├── market-pricing.png
+│   └── customer-safety.png
+│
+└── dax-measures.md
+```
+
+*Add only files you have available. Avoid committing sensitive information or unnecessarily large datasets.*
+
+## 🚀 How to Use the Project
+
+1. Clone or download this repository.
+2. Open `EV_Analytics_PowerBI_Project.pbix` in Microsoft Power BI Desktop.
+3. If necessary, update the dataset path in Power Query.
+4. Refresh the data model.
+5. Review the DAX measures and verify their aggregations.
+6. Explore the four dashboard pages.
+7. Use the slicers to compare manufacturers, vehicle types, countries, drive types, and release years.
+
+## 🎓 Skills Demonstrated
+
+- Data analysis and exploratory analysis
+- Data cleaning and validation
+- Power Query transformations
 - DAX measures and KPI development
-- Interactive reporting with slicers
+- Data visualization and dashboard design
 - Comparative and trend analysis
-- Data-quality validation
-- Dashboard design and storytelling
+- Interactive reporting with slicers
+- Data storytelling and business recommendations
+- Project documentation using GitHub
 
-## 🔍 Data Quality Considerations
+## 🏁 Conclusion
 
-Before drawing conclusions from the dashboard, the following checks should be performed:
+The EV Analytics Dashboard brings together market, technical performance, pricing, and customer-focused vehicle characteristics in one interactive Power BI report.
 
-- Validate missing values, duplicates, and invalid records.
-- Investigate negative vehicle prices.
-- Confirm whether each row represents a vehicle model, trim, or another observation.
-- Use suitable aggregations, such as averages or counts, instead of sums where appropriate.
-- Verify the meaning and scale of efficiency and safety scores.
-- Ensure that chart titles, units, and KPI labels are clear and consistent.
+By combining KPI cards, comparative charts, scatter plots, geographical visuals, and slicers, the project provides a practical way to explore EV data and investigate questions about vehicle performance, price, range, safety, and utility.
 
-These checks help improve the accuracy and reliability of the analysis.
+The next step is to validate the underlying measures and data quality, then document verified insights from each dashboard page.
 
-## 🚀 How to Use This Project
+## 👤 About Me
 
-1. Clone or download this GitHub repository.
-2. Install [Microsoft Power BI Desktop](https://powerbi.microsoft.com/desktop/).
-3. Open the `.pbix` Power BI report file.
-4. If required, update the dataset source path in Power Query.
-5. Refresh the data.
-6. Explore the four dashboard pages using the interactive filters.
+I'm an aspiring Data Analyst from India, building my portfolio through practical projects using Excel, SQL, Power BI, and data visualization.
 
-**Note:** The Power BI `.pbix` file and the CSV dataset must be included in the repository or provided separately for users to reproduce the dashboard. Screenshots alone do not provide an interactive report.
+This project demonstrates my ability to transform a dataset into an interactive dashboard and communicate analytical questions, findings, and recommendations.
 
-## 💡 Future Improvements
+🔗 **LinkedIn:** [https://www.linkedin.com/in/amanaganti-venkateswarlu-520404200]
 
-- Add year-over-year market analysis.
-- Create a manufacturer ranking based on clearly defined metrics.
-- Add advanced DAX measures and comparative KPIs.
-- Improve tooltip pages and drill-through navigation.
-- Add a dedicated data-cleaning and validation report.
-- Publish the dashboard to Power BI Service, subject to access and licensing requirements.
+🔗 **GitHub:** [https://github.com/VenkyAmanaganti]
 
-## 👨‍💻 Author
+---
 
-**EV Analytics Power BI Project**
-
-This project demonstrates practical data analytics and business intelligence skills using Power BI, Power Query, DAX, and interactive visualizations.
-
-## ⭐ Feedback
-
-If you find this project useful, consider starring the repository. Suggestions and feedback for improving the dashboard are welcome.
+*This project is intended for educational and portfolio purposes. Verify dataset provenance and licensing before sharing the source data publicly.*
